@@ -15,7 +15,7 @@ import (
 
 type BookControllerTestSuite struct {
 	suite.Suite
-	controller Bk
+	controller *Bk
 	bookMock   *models.Mockibook
 }
 
@@ -25,7 +25,7 @@ func TestBookController(t *testing.T) {
 
 func (suite *BookControllerTestSuite) SetupTest() {
 	suite.bookMock = new(models.Mockibook)
-	suite.controller = Bk{
+	suite.controller = &Bk{
 		ebook: suite.bookMock,
 	}
 
