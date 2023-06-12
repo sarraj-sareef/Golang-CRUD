@@ -1,4 +1,4 @@
-package config 
+package config
 
 import (
 	"github.com/jinzhu/gorm"
@@ -6,19 +6,18 @@ import (
 )
 
 var (
-	db * gorm.DB
+	Db *gorm.DB
 )
-func Connect(){
+
+func InitApp() {
 	d, err := gorm.Open("mysql", "sarraj:Password@123@/simplerest?charset=utf8&parseTime=True&loc=Local")
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
-	db = d
-}
-  
-func GetDB() *gorm.DB{
-	return db
+	Db = d
 }
 
-
-
+//
+//func GetDB() *gorm.DB {
+//	return Db
+//}
