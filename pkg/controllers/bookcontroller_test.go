@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"github.com/golang/mock/gomock"
 	"net/http"
 	"net/http/httptest"
 	"strconv"
@@ -24,7 +25,8 @@ func TestBookController(t *testing.T) {
 }
 
 func (suite *BookControllerTestSuite) SetupTest() {
-	suite.bookMock = new(models.Mockibook)
+	ctrl := gomock.NewController(suite.T())
+	suite.bookMock = models.NewMockibook(ctrl)
 	suite.controller = &Bk{
 		ebook: suite.bookMock,
 	}
